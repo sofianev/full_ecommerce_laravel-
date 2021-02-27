@@ -8,12 +8,12 @@
 
       <div class="sl-pagebody">
         <div class="sl-page-title">
-          <h5>Category update</h5>
+          <h5>SubCategory update</h5>
          
         </div><!-- sl-page-title -->
 
         <div class="card pd-20 pd-sm-40">
-          <h6 class="card-body-title">Ctegory update </h6>
+          <h6 class="card-body-title">SubCtegory update </h6>
 
 
           <div class="table-wrapper">
@@ -29,12 +29,25 @@
                       </div>
                      @endif
 
-              <form method="post" action="{{URL::to('update/category/'.$category->id)}}" enctype="multipart/form-data">  
+              <form method="post" action="{{URL::to('update/subcat/'.$subcat->id)}}" >  
                 @csrf
               <div class="modal-body pd-20">
                   <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">SubCategory Name</label>
+                     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="category name" value="{{$subcat->subcategory_name}}" name="subcategory_name">
+                        </div>
+                         <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Category Name</label>
-                     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="category name" value="{{$category->category_name}}" name="category_name">
+                     <select class="form-control" name="category_id">
+
+                      @foreach($category as $row)
+                               <!-- selection le categorie corespondant de subcategory -->
+                      <option value="{{$row->id}}" <?php if ($row->id == $subcat->category_id) {
+                         echo'selected' ; } ?> > {{$row->category_name}}</option> 
+ 
+                      @endforeach
+
+                     </select>
                         </div>
                      
               </div><!-- modal-body -->

@@ -39,3 +39,38 @@ Route::post('update/category/{id}', 'Admin\Category\CategoryController@Updatecat
                      /////brands
 Route::get('admin/brand', 'Admin\Category\BrandController@brand')->name('brands');
 Route::post('admin/store/brand', 'Admin\Category\BrandController@storebrand')->name('store.brand');
+Route::get('delete/brand/{id}', 'Admin\Category\BrandController@Deletebrand');
+Route::get('edit/brand/{id}', 'Admin\Category\BrandController@Editbrand');
+Route::post('update/brand/{id}', 'Admin\Category\BrandController@Updatebrand');
+
+                 //////subcategories
+Route::get('admin/subcategory', 'Admin\Category\SubCategoryController@subcategories')->name('sub.categories');
+Route::post('admin/store/subcat','Admin\Category\SubCategoryController@storesubcat')->name('store.subcategory');
+Route::get('delete/subcategory/{id}', 'Admin\Category\SubCategoryController@Deletesubcat');
+Route::get('edit/subcat/{id}', 'Admin\Category\SubCategoryController@Editsubcat');
+Route::post('update/subcat/{id}', 'Admin\Category\SubCategoryController@Updatesubcat');
+
+                     /////coupons
+Route::get('admin/coupon', 'Admin\Category\CouponController@coupon')->name('admin.coupon');
+Route::post('admin/store/coupon', 'Admin\Category\CouponController@storecoupon')->name('store.coupon');
+Route::get('delete/coupon/{id}', 'Admin\Category\CouponController@Deletecoupon');
+Route::get('edit/coupon/{id}', 'Admin\Category\CouponController@Editcoupon');
+Route::post('update/coupon/{id}', 'Admin\Category\CouponController@Updatecoupon');
+
+          ///// newslaters
+Route::get('admin/newslater', 'Admin\Category\CouponController@newslater')->name('admin.newslater');
+
+     //// select subcategory with ajax json file
+Route::get('get/subcategory/{category_id}', 'Admin\ProductController@Getsubcat');
+
+              /////product
+Route::get('admin/product/all', 'Admin\ProductController@index')->name('all.product');
+Route::get('admin/product/add', 'Admin\ProductController@create')->name('add.product');
+Route::post('admin/sotre/product', 'Admin\ProductController@store')->name('store.product');
+
+                        
+                        ///// frontend
+Route::post('store/newslater', 'FrontController@storeNewslater')->name('store.newslater');
+Route::get('delete/sub/{id}', 'Admin\Category\CouponController@Deletesub');
+
+
