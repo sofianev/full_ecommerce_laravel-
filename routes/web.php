@@ -67,6 +67,14 @@ Route::get('get/subcategory/{category_id}', 'Admin\ProductController@Getsubcat')
 Route::get('admin/product/all', 'Admin\ProductController@index')->name('all.product');
 Route::get('admin/product/add', 'Admin\ProductController@create')->name('add.product');
 Route::post('admin/sotre/product', 'Admin\ProductController@store')->name('store.product');
+Route::get('inactive/product/{id}', 'Admin\ProductController@inactive');
+Route::get('active/product/{id}', 'Admin\ProductController@active');
+Route::get('delete/product/{id}', 'Admin\ProductController@Deleteproduct');
+Route::get('view/product/{id}', 'Admin\ProductController@viewproduct');
+Route::get('edit/product/{id}', 'Admin\ProductController@Editproduct');
+Route::post('update/product/withoutphoto/{id}', 'Admin\ProductController@updateproductwithoutphoto');
+Route::post('update/product/photo/{id}', 'Admin\ProductController@updateproductphoto');
+
 
                         
                         ///// frontend
