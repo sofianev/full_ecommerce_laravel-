@@ -36,7 +36,7 @@ class ProductController extends Controller
 
     public function Getsubcat($category_id){
 
-    $cat=DB::table('subcategories')->where('category_id',$category_id)->get();
+    $cat=DB::table('subcategories')->where('category_id', $category_id)->get();
       return json_encode($cat);
 }
 

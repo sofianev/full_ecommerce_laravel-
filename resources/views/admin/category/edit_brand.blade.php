@@ -34,7 +34,7 @@
               <div class="modal-body pd-20">
                   <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">brand Name</label>
-                     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="category name" value="{{$brand->brand_name}}" name="brand_name">
+                     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  value="{{$brand->brand_name}}" name="brand_name">
                   </div>
 
                   <div class="mb-3">

@@ -59,6 +59,7 @@
                 <div class="form-group mg-b-10-force">
                   <label class="form-control-label">Sub Category: <span class="tx-danger">*</span></label>
                   <select class="form-control select2" data-placeholder="Choose country" name="subcategory_id">
+
                     
                   </select>
                 </div>
@@ -224,7 +225,6 @@
      $('select[name="category_id"]').on('change',function(){
           var category_id = $(this).val();
           if (category_id) {
-            
             $.ajax({
               url: "{{ url('/get/subcategory/') }}/"+category_id,
               type:"GET",

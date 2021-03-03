@@ -16,7 +16,7 @@ class CategoryController extends Controller
 
     public function category (){
 
-    	$category= Category::all();
+    	$category=DB::table('categories')->get();;
     	return view('admin.category.category',compact('category')); //compact function to create an arry to existing variable  in this exemple arry for category data 
     	
     }

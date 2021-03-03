@@ -8,12 +8,12 @@
 
       <div class="sl-pagebody">
         <div class="sl-page-title">
-          <h5>Category update</h5>
+          <h5>Blog Category update</h5>
          
         </div><!-- sl-page-title -->
 
         <div class="card pd-20 pd-sm-40">
-          <h6 class="card-body-title">Ctegory update </h6>
+          <h6 class="card-body-title">blog Ctegory update </h6>
 
 
           <div class="table-wrapper">
@@ -28,14 +28,18 @@
                       </ul>
                       </div>
                      @endif
-                     
-              <form method="post" action="{{URL::to('update/category/'.$category->id)}}" enctype="multipart/form-data">  
-                @csrf
 
+              <form method="post" action="{{URL::to('update/blog/category/'.$blogcat->id)}}">  
+                @csrf
               <div class="modal-body pd-20">
                   <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Category Name</label>
-                     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$category->category_name}}" name="category_name">
+                    <label for="exampleInputEmail1" class="form-label">Category Name EN</label>
+                     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  value="{{$blogcat->category_name_en}}" name="category_name_en">
+                        </div>
+
+                 <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Category Name FR</label>
+                     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  value="{{$blogcat->category_name_fr}}" name="category_name_fr">
                         </div>
                      
               </div><!-- modal-body -->

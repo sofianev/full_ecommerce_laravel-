@@ -64,6 +64,7 @@ Route::get('admin/newslater', 'Admin\Category\CouponController@newslater')->name
 Route::get('get/subcategory/{category_id}', 'Admin\ProductController@Getsubcat');
 
               /////product
+
 Route::get('admin/product/all', 'Admin\ProductController@index')->name('all.product');
 Route::get('admin/product/add', 'Admin\ProductController@create')->name('add.product');
 Route::post('admin/sotre/product', 'Admin\ProductController@store')->name('store.product');
@@ -75,10 +76,32 @@ Route::get('edit/product/{id}', 'Admin\ProductController@Editproduct');
 Route::post('update/product/withoutphoto/{id}', 'Admin\ProductController@updateproductwithoutphoto');
 Route::post('update/product/photo/{id}', 'Admin\ProductController@updateproductphoto');
 
+                       
+                         //////blog_admin
+
+ Route::get('blog/category/list', 'Admin\PostController@blogcatlist')->name('add.bolg.categorylist');
+ Route::post('blog/store/category', 'Admin\PostController@storeblogcat')->name('store.blogcategory');
+ Route::get('delete/blogcategory/{id}', 'Admin\PostController@Deleteblogcat');
+ Route::get('edit/blogcategory/{id}', 'Admin\PostController@Editblogcat');
+ Route::post('update/blog/category/{id}', 'Admin\PostController@Updateblogcat');
+
+ Route::get('admin/add/post', 'Admin\PostController@create')->name('add.blogpost');
+ Route::get('admin/all/post', 'Admin\PostController@index')->name('all.blogpost');
+ Route::post('admin/sotre/post', 'Admin\PostController@store')->name('store.post');
+ Route::get('delete/post/{id}', 'Admin\PostController@Deletepost');
+ Route::get('edit/post/{id}', 'Admin\PostController@Editpost');
+ Route::get('update/post/{id}', 'Admin\PostController@updatepost');
+
+
+
+
+
+
 
                         
                         ///// frontend
 Route::post('store/newslater', 'FrontController@storeNewslater')->name('store.newslater');
 Route::get('delete/sub/{id}', 'Admin\Category\CouponController@Deletesub');
+
 
 
