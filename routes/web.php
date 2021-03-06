@@ -90,7 +90,7 @@ Route::post('update/product/photo/{id}', 'Admin\ProductController@updateproductp
  Route::post('admin/sotre/post', 'Admin\PostController@store')->name('store.post');
  Route::get('delete/post/{id}', 'Admin\PostController@Deletepost');
  Route::get('edit/post/{id}', 'Admin\PostController@Editpost');
- Route::get('update/post/{id}', 'Admin\PostController@updatepost');
+ Route::post('update/post/{id}', 'Admin\PostController@updatepost');
 
 
 

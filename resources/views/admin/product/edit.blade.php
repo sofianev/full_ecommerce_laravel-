@@ -3,14 +3,13 @@
 
 
 @section('admin_content')
-
 @php
-$category=DB::table('categories')->get();
-$brand=DB::table('brands')->get();
-$subcategory=DB::table('subcategories')->get();
+  $category = DB::table('categories')->get();
+  $brand = DB::table('brands')->get();
+  $subcategory = DB::table('subcategories')->get();
 
+ @endphp
 
-@endphp
   <!-- ########## START: MAIN PANEL ########## -->
     <div class="sl-mainpanel">
       <nav class="breadcrumb sl-breadcrumb">

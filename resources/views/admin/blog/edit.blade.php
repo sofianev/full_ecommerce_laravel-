@@ -5,11 +5,10 @@
 @section('admin_content')
 
 @php
-$category=DB::table('post_category')->get();
 
-
-
+ $blogcategory = DB::table('post_category')->get();
 @endphp
+
   <!-- ########## START: MAIN PANEL ########## -->
 
     <div class="sl-mainpanel">
@@ -26,7 +25,8 @@ $category=DB::table('post_category')->get();
           </h6>
           <p class="mg-b-20 mg-sm-b-30">Update Post Form</p>
 
-          <form method="post" action="{{ URL::to('update.post/'.$post->id) }}" enctype="multipart/form-data">
+          <form method="post" action="{{ url('update/post/'.$post->id) }}" enctype="multipart/form-data">
+      
             @csrf
 
           <div class="form-layout">
@@ -50,15 +50,13 @@ $category=DB::table('post_category')->get();
               <div class="col-lg-4">
                 <div class="form-group mg-b-10-force">
                   <label class="form-control-label">Blog Category <span class="tx-danger">*</span></label>
-                  <select class="form-control select2" data-placeholder="Choose category" name="category_id">
+                  <select class="form-control select2" name="category_id">
                     <option label="Choose category"></option>
-                     @foreach($post as $row)
-                    <option value="{{$row->id}}"
-                     <?php if ($row->id == $post->category_id){
-                      echo 'selected'; } ?>>
-
-                      {{$row->category_name_en}}</option>
-
+                     @foreach($blogcategory as $row)
+                    <option value="{{ $row->id }}"
+                  <?php if ($row->id == $post->category_id) {
+                   echo "selected"; } ?> >
+                      {{ $row->category_name_en }}</option>
                     @endforeach
                   </select>
                 </div>
@@ -73,7 +71,7 @@ $category=DB::table('post_category')->get();
                 <div class="form-group">
                   <label class="form-control-label">Post details ENGLICH<span class="tx-danger">*</span></label>
                   <textarea class="form-control" id="summernote" name="post_detail_en">
-                    {{!! $post->post_detail_en !!}}
+                    {!! $post->post_detail_en !!}
                   </textarea>
                   
                 </div>
@@ -83,7 +81,7 @@ $category=DB::table('post_category')->get();
                 <div class="form-group">
                   <label class="form-control-label">Post details FRAN9AIS <span class="tx-danger">*</span></label>
                   <textarea class="form-control" id="summernote1" name="post_detail_fr">
-                      {{!! $post->post_detail_fr !!}}
+                      {!! $post->post_detail_fr !!}
                   </textarea>
                   
                 </div>
@@ -96,7 +94,7 @@ $category=DB::table('post_category')->get();
                 <div class="form-group">
                   <label class="form-control-label">Image post <span class="tx-danger">*</span></label>
                   <label class="custom-file">
-                  <input type="file" id="file" class="custom-file-input" name="post_image" onchange="readURL1(this);" required="">
+                  <input type="file" id="file" class="custom-file-input" name="post_image" onchange="readURL1(this);" >
                   <span class="custom-file-control"></span>
                   <img src="#" id="one">
                 </label>

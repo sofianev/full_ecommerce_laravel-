@@ -56,7 +56,7 @@ class PostController extends Controller
        }
 public function  Editblogcat($id){
 
-       	$blogcat = DB::table('post_category')->where('id' ,$id)->first();
+       	$blogcat = DB::table('post_category')->where('id',$id)->first();
        	return view('admin.blog.category.edit',compact('blogcat'));
 }
    
@@ -159,17 +159,20 @@ public function index(){
        }
 
        public function  Editpost ($id){
-
-        $post = DB::table('product')->where('id' ,$id)->first();
+       
+        $post = DB::table('post')->where('id' ,$id)->first();
+ 
         return view('admin.blog.edit', compact('post') );
+
 
        }
 
 
 
-       public function updatepost(Request $request , $id){
-   $oldimage=$request->old_image;
-  $data=array();
+ public function updatepost(Request $request , $id){
+
+ $oldimage=$request->old_image;
+ $data=array();
  $data['post_title_en'] = $request->post_title_en;
  $data['post_title_fr'] = $request->post_title_fr;
  $data['category_id'] = $request->category_id;
@@ -179,7 +182,7 @@ public function index(){
   $post_image=$request->file('post_image');
   
  if ($post_image) {
- 	unlink('old_image');
+ 	unlink($oldimage);
      $post_image_name=hexdec(uniqid()).'.'.$post_image->getClientOriginalExtension();
      Image::make($post_image)->resize(400,200)->save('public/media/post/'.$post_image_name);
      $data['post_image']= 'public/media/post/'.$post_image_name;
