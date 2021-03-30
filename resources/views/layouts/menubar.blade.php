@@ -217,12 +217,12 @@ $category=DB::table('categories')->get();
                         <h1 class="banner_text">{{$slider->product_name}}</h1>
                         <div class="banner_price">
                             @if($slider->discount_price==NULL)
-                            <H2>{{$slider->selling_price}}</H2>
+                            <H2> $ {{ $slider->selling_price}}</H2>
                             @else
-                        <span>{{$slider->selling_price}}</span> {{$slider->discount_price}}</div>
+                        <span>${{$slider->selling_price}}</span> ${{$slider->discount_price}}</div>
                           @endif
                         <div class="banner_product_name">{{$slider->brand_name}}</div>
-                        <div class="button banner_button"><a href="#">Shop Now</a></div>
+                        <div class="button banner_button"><a href="#">shop now </a></div>
                     </div>
                 </div>
             </div>

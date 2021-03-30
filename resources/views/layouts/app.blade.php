@@ -41,8 +41,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col d-flex flex-row">
-                        <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="images/phone.png" alt=""></div>+38 068 005 3570</div>
-                        <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="images/mail.png" alt=""></div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a></div>
+                        <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="images/phone.png" alt=""></div>+213 698 449 893</div>
+                        <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="images/mail.png" alt=""></div><a href="mailto:fastsales@gmail.com">sofianebouzid4@gmail.com</a></div>
                         <div class="top_bar_content ml-auto">
                             <div class="top_bar_menu">
                                 <ul class="standard_dropdown top_bar_dropdown">
@@ -58,7 +58,7 @@
                                         <a href="#">$ US dollar<i class="fas fa-chevron-down"></i></a>
                                         <ul>
                                             <li><a href="#">EUR Euro</a></li>
-                                            <li><a href="#">GBP British Pound</a></li>
+                                            <li><a href="#">DA Diner ALGERIE</a></li>
                                             <li><a href="#">JPY Japanese Yen</a></li>
                                         </ul>
                                     </li>
@@ -84,7 +84,7 @@
                     <!-- Logo -->
                     <div class="col-lg-2 col-sm-3 col-3 order-1">
                         <div class="logo_container">
-                            <div class="logo"><a href="{{url('/')}}"><img src="{{asset('public/frontend/images/logo.png')}}" alt=""></a></div>
+                            <div class="logo"><a href="{{url('/')}}"><img src="{{asset('public/frontend/images/featured_7.png')}}" alt=""></a></div>
                         </div>
                     </div>
 
