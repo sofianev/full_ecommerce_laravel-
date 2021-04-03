@@ -190,6 +190,12 @@
                 <span> Hot New</span>
               </div><!-- col-4 -->
 
+              <div class="col-lg-4">
+                <label class="ckbox"></label>
+                <input type="checkbox" name="buyone_getone" value="1" <?php if($product->buyone_getone==1){ echo 'checked'; } ?>>
+                <span> Buyone Getone</span>
+              </div><!-- col-4 -->
+
              
               <div class="col-lg-4">
                 <label class="ckbox"></label>

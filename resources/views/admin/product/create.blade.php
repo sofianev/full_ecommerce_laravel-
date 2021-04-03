@@ -194,6 +194,13 @@
                 <span>product Trend  </span>
               </div><!-- col-4 -->
 
+
+              <div class="col-lg-4">
+                <label class="ckbox"></label>
+                <input type="checkbox" name="main_slider" value="1">
+                <span>mid slider</span>
+              </div><!-- col-4 -->
+
              
               <div class="col-lg-4">
                 <label class="ckbox"></label>
@@ -201,12 +208,14 @@
                 <span> Hot New</span>
               </div><!-- col-4 -->
 
-             
+
               <div class="col-lg-4">
                 <label class="ckbox"></label>
-                <input type="checkbox" name="main_slider" value="1">
-                <span>mid slider</span>
+                <input type="checkbox" name="buyone_getone" value="1">
+                <span>Buy One Get One</span>
               </div><!-- col-4 -->
+
+             
 
 
 

@@ -5,7 +5,7 @@
 
       <div class="login-wrapper wd-300 wd-xs-350 pd-25 pd-xs-40 bg-white">
         <div class="signin-logo tx-center tx-24 tx-bold tx-inverse">Ecommerce <span class="tx-info tx-normal">admin</span></div>
-        <div class="tx-center mg-b-60">Professional Admin Ecommerce Design</div>
+        <div class="tx-center mg-b-60"> Admin Ecommerce Design</div>
 
          <form action="{{route('admin.login')}}" class="d-block" method="post">
             @csrf
