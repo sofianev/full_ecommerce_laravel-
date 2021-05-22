@@ -1,13 +1,16 @@
 <?php
 
-
+Route::get('/clear-cache', function() {
+    Artisan::call('cache:clear');
+    return "Cache is cleared";
+});
 
 Route::get('/', function () {return view('pages.index');});
 //auth & user
 Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/password-change', 'HomeController@changePassword')->name('password.change');
-Route::post('/password-update', 'HomeController@updatePassword')->name('password.update');
+Route::get('/password/change', 'HomeController@changePassword')->name('password.change');
+Route::post('/password/update', 'HomeController@updatePassword')->name('password.update');
 Route::get('/user/logout', 'HomeController@Logout')->name('user.logout');
 
 //admin=======
@@ -102,6 +105,43 @@ Route::post('update/product/photo/{id}', 'Admin\ProductController@updateproductp
                         ///// frontend
 Route::post('store/newslater', 'FrontController@storeNewslater')->name('store.newslater');
 Route::get('delete/sub/{id}', 'Admin\Category\CouponController@Deletesub');
+       
+                          //add wish list
+Route::get('add/wishlist/{id}', 'WishlistController@addWishlist');
+
+                        // //add to cart
+Route::get('add/cart/{id}', 'CartController@AddCart');
+Route::get('check', 'CartController@check');
+Route::get('product/cart', 'CartController@ShowCart')->name('show.cart');
+Route::get('remove/cart/{rowId}', 'CartController@removeCart');
+Route::post('update/cart/item/', 'CartController@UpdateCart')->name('update.cartitem');
+Route::get('/cart/product/view/{id}', 'CartController@ViewProduct');
+Route::post('insert/into/cart/', 'CartController@insertCart')->name('insert.into.cart');
+Route::get('user/checkout/', 'CartController@Checkout')->name('user.checkout');
+Route::get('user/wishlist/', 'CartController@wishlist')->name('user.wishlist');
+
+
+Route::post('user/apply/coupon/', 'CartController@Coupon')->name('apply.coupon');
+Route::get('coupon/remove/', 'CartController@CouponRemove')->name('coupon.remove');
+
+
+
+
+Route::get('/product/details/{id}/{product_name}', 'ProductController@ProductView');
+Route::post('/cart/product/add/{id}', 'ProductController@AddCart');
+
+
+
+
+
+Route::get('payment/page', 'CartController@PaymentPage')->name('payment.step');
+
+/// Blog Post Route 
+
+Route::get('blog/post/', 'BlogController@blog')->name('blog.post');
+Route::get('language/english', 'BlogController@English')->name('language.english');
+Route::get('language/Français', 'BlogController@Français')->name('language.Français');
+Route::get('blog/single/{id}', 'BlogController@blogSingle');
 
 
 

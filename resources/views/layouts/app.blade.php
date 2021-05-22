@@ -25,6 +25,11 @@
 <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/styles/responsive.css')}}">
 
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
+
+
+<link rel="stylesheet" href="sweetalert2.min.css">
+ <script src="https://js.stripe.com/v3/"></script>
+
 </head>
 
 <body>
@@ -43,31 +48,51 @@
                     <div class="col d-flex flex-row">
                         <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="images/phone.png" alt=""></div>+213 698 449 893</div>
                         <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="images/mail.png" alt=""></div><a href="mailto:fastsales@gmail.com">sofianebouzid4@gmail.com</a></div>
+                        
                         <div class="top_bar_content ml-auto">
                             <div class="top_bar_menu">
                                 <ul class="standard_dropdown top_bar_dropdown">
-                                    <li>
-                                        <a href="#">English<i class="fas fa-chevron-down"></i></a>
-                                        <ul>
-                                            <li><a href="#">Italian</a></li>
-                                            <li><a href="#">Spanish</a></li>
-                                            <li><a href="#">Japanese</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="#">$ US dollar<i class="fas fa-chevron-down"></i></a>
-                                        <ul>
-                                            <li><a href="#">EUR Euro</a></li>
-                                            <li><a href="#">DA Diner ALGERIE</a></li>
-                                            <li><a href="#">JPY Japanese Yen</a></li>
-                                        </ul>
-                                    </li>
+
+                                   
+                                    @php
+                                    $language = Session()->get('lang');
+                                  @endphp
+                  
+                  
+                                                      <li>
+                                                  @if(Session()->get('lang') == 'Français' )
+                                                   <a href="{{ route('language.english') }}">English<i class="fas fa-chevron-down"></i></a>
+                                                  @else
+                                                   <a href="{{ route('language.Français') }}">Français<i class="fas fa-chevron-down"></i></a>
+                                                  @endif        
+                                         
+                                          
+                                                           
+                                                      </li>
+                                   
                                 </ul>
                             </div>
                             <div class="top_bar_user">
-                                <div class="user_icon"><img src="images/user.svg" alt=""></div>
-                                <div><a href="{{route('register')}}">Register</a></div>
-                                <div><a href="{{route('login')}}">Sign in</a></div>
+
+                         @guest
+                <div><a href="{{ route('login') }}"><div class="user_icon"><img src="{{ asset('public/frontend/images/user.svg')}}" alt=""></div> Register/Login</a></div>
+                         @else
+
+                    <ul class="standard_dropdown top_bar_dropdown">
+                                    <li>
+           <a href="{{ route('home') }}"><div class="user_icon"><img src="{{ asset('public/frontend/images/user.svg')}}" alt=""></div> {{ Auth::user()->name }} <i class="fas fa-chevron-down"></i></a>
+                                        <ul>
+                                            <li><a href="{{ route('user.wishlist') }}">Wishlist</a></li>
+                                            <li><a href="{{ route('user.checkout') }}">Checkout</a></li>
+                                            <li><a href="#">Others</a></li>
+                                            <li><a href="{{ route('user.logout') }}">Logout</a></li>
+                                        </ul>
+                                    </li>
+                                    
+                                </ul> 
+                         @endguest
+ 
+                                
                             </div>
                         </div>
                     </div>
@@ -123,23 +148,36 @@
                     <div class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right">
                         <div class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
                             <div class="wishlist d-flex flex-row align-items-center justify-content-end">
-                                <div class="wishlist_icon"><img src="images/heart.png" alt=""></div>
+                     @guest
+
+                     @else
+               
+
+               @php
+         $wishlist = DB::table('wishlists')->where('user_id',Auth::id())->get();
+               @endphp
+
+
+
+                                <div class="wishlist_icon"><img src="{{ asset('public/frontend/images/heart.png')}}" alt=""></div>
                                 <div class="wishlist_content">
                                     <div class="wishlist_text"><a href="#">Wishlist</a></div>
-                                    <div class="wishlist_count">115</div>
+                                    <div class="wishlist_count">{{ count($wishlist) }}</div>
                                 </div>
                             </div>
 
+                            @endguest
                             <!-- Cart -->
                             <div class="cart">
                                 <div class="cart_container d-flex flex-row align-items-center justify-content-end">
                                     <div class="cart_icon">
                                         <img src="{{asset('public/frontend/images/cart.png')}}" alt="">
-                                        <div class="cart_count"><span>10</span></div>
+
+                                        <div class="cart_count"><span>{{Cart::count()}}</span></div>
                                     </div>
                                     <div class="cart_content">
-                                        <div class="cart_text"><a href="#">Cart</a></div>
-                                        <div class="cart_price">$85</div>
+                                        <div class="cart_text"><a href="{{ route('show.cart') }}">Cart</a></div>
+                                        <div class="cart_price">${{ Cart::subtotal()}}</div>
                                     </div>
                                 </div>
                             </div>
@@ -165,13 +203,13 @@
                 <div class="col-lg-3 footer_col">
                     <div class="footer_column footer_contact">
                         <div class="logo_container">
-                            <div class="logo"><a href="#">OneTech</a></div>
+                            <div class="logo"><a href="#">Sofiane-Ecommerce</a></div>
                         </div>
                         <div class="footer_title">Got Question? Call Us 24/7</div>
-                        <div class="footer_phone">+38 068 005 3570</div>
+                        <div class="footer_phone">+213 698 449 893</div>
                         <div class="footer_contact_text">
-                            <p>17 Princess Road, London</p>
-                            <p>Grester London NW18JR, UK</p>
+                            <p>City el hayet la gué de constantine</p>
+                            <p>Algerie , alger  DZ</p>
                         </div>
                         <div class="footer_social">
                             <ul>
@@ -275,7 +313,16 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
-      <script src="{{ asset('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}}"></script>
+<script src="{{ asset('public/frontend/js/product_custom.js')}}"></script>
+
+
+<script src="{{ asset('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}}"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+  <script src="{{ asset('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}}"></script>
+ 
+
+
 
        <script>
         @if(Session::has('messege'))
