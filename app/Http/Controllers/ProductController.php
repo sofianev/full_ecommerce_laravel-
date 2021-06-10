@@ -29,8 +29,19 @@ class ProductController extends Controller
     }
 	
 	public function AddCart(Request $request, $id){
+
+         
+
 		$product = DB::table('product')->where('id',$id)->first();
-		
+
+		$qte=$request->qty;
+		if ( ($qte - $product->product_quantity ) == 0 ) {
+			$notification=array(
+				'messege'=>'Product not avb',
+				'alert-type'=>'danger'
+				 );
+			   return Redirect()->back()->with($notification);
+		} 
 		  $data = array();
 		 
 		 if ($product->discount_price == NULL) {
@@ -68,5 +79,26 @@ class ProductController extends Controller
 			}   
 		
 			  }
+
+			  public function ProductsView($id){
+       
+				$products = DB::table('product')->where('subcategory_id',$id)->paginate(5);
+		 
+				$categorys = DB::table('categories')->get();
+		 
+				$brands = DB::table('product')->where('subcategory_id',$id)->select('brand_id')->groupBy('brand_id')->get();
+		 
+				return view('pages.all_products',compact('products','categorys','brands'));
+		 
+		 
+			   }
+		 
+		   
+		   public function CategoryView($id){
+		 
+			 $category_all =  DB::table('product')->where('category_id',$id)->paginate(10);
+			 return view('pages.all_category',compact('category_all'));
+		 
+		   }
 		
 }

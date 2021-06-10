@@ -3,7 +3,7 @@
 @section('content')
 
 @include('layouts.menubar')
-
+@include('layouts.slide')
 
 @php
 

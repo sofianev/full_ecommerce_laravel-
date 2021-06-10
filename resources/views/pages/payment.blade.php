@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@include('layouts.menubar')
 
 
 @php
@@ -163,7 +164,7 @@ $vat = $setting->vat;
 
              <li><input type="radio" name="payment" value="paypal"><img src="{{ asset('public/frontend/images/paypal.png') }}" style="width: 100px; height: 60px;"> </li>
 
-              <li><input type="radio" name="payment" value="ideal"><img src="{{ asset('public/frontend/images/mollie.png') }}" style="width: 100px; height: 60px;"> </li>
+              <li><input type="radio" name="payment" value="oncash"><img src="{{ asset('public/frontend/images/delivery.png') }}" style="width: 100px; height: 60px;"> </li>
             
         </ul>
         

@@ -226,4 +226,18 @@ class CartController extends Controller
 
 }
 
+public function Search(Request $request){
+ 
+	$item = $request->search;
+	// echo "$item";
+  
+	$products = DB::table('product')
+			  ->where('product_name','LIKE',"%$item%")
+			  ->paginate(20);
+  
+	  return view('pages.search',compact('products'));        
+  
+  
+   }
+
 }

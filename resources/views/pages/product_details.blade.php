@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@include('layouts.menubar')
 
 <link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/styles/product_styles.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/styles/product_responsive.css') }}">
@@ -91,6 +92,9 @@
 									<button type="submit" class="button cart_button">Add to Cart</button>
 									<div class="product_fav"><i class="fas fa-heart"></i></div>
 								</div>
+                                <br><br>
+								<!-- Go to www.addthis.com/dashboard to customize your tools -->
+								<div class="addthis_inline_share_toolbox"></div>
 								
 							</form>
 						</div>
@@ -132,9 +136,12 @@
   	<br>{!! $product->product_details !!}</div>
   <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
   	<br>{{ $product->video_link }}</div>
-  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab"><br> product review </div>
+  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab"><br> 
+  <div class="fb-comments" data-href="{{ Request::url() }}" data-width="" data-numposts="5"></div>
 
-  
+	
+
+</div>
 
   </div>
 </div>
@@ -145,8 +152,10 @@
 		</div>
 	
 
+		<div id="fb-root"></div>
+		<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v6.0"></script>
+		
 
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v6.0"></script>
 
 <!-- Go to www.addthis.com/dashboard to customize your tools -->
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5e4b85f98de5201f"></script>
